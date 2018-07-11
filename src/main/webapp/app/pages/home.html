@@ -1,10 +1,14 @@
-<table>
-    <tr ng-repeat="city in citys">
-        <td>{{$index+1}}</td>
-        <td>{{city.id}}</td>
-        <td>{{city.name}}</td>
-        <td>{{city.country_code}}</td>
-        <td>{{city.district}}</td>
-        <td>{{city.population}}</td>
-    </tr>
-</table>
+<div ng-controller="baseController">
+    home.html
+    <button ng-click="getAllCityDate()" class="button">getAllCityDate</button>
+    <table>
+        <tr ng-repeat="city in citys">
+            <td>{{$index+1}}</td>
+            <td>{{city.id}}</td>
+            <td>{{city.name}}</td>
+            <td>{{city.country_code}}</td>
+            <td>{{city.district}}</td>
+            <td>{{city.population}}</td>
+        </tr>
+    </table>
+</div>

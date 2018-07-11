@@ -8,6 +8,7 @@ requirejs.config({
         //库文件
         "angular": "./external_library/angular/angular",
         "angularAMD": "./external_library/angular/angularAMD",
+        "ngLoad": "./external_library/angular/ng-load",
         "ngRouter": "./external_library/angular/angular-route",
         "uiRouter": "./external_library/angular/angular-ui-router",
         "domReady": "./external_library/require/domReady",
@@ -16,10 +17,10 @@ requirejs.config({
         "math": "./external_library/math/Math.uuid",
         //自己的JavaScript文件
         "baseController": "./controller/baseController",
+        "firstController": "./controller/firstController",
+        "secondController": "./controller/secondController",
         "baseDirective": "./directive/baseDirective",
         "app": "./app",
-        "init": "./init",
-        "router": "./router",
         "baseService": "./service/baseService"
     },
     shim: {
@@ -34,8 +35,12 @@ requirejs.config({
             deps: ['angular'],
             exports: 'angular-route'
         },
-        'angularAMD': ['angular']
+        'angularAMD': ['angular', 'uiRouter'],
+        "ngLoad": {
+            deps: ["angularAMD"],
+            experts: "ngLoad"
+        }
     },
-    deps: ['init'],//首先启动初始化的JavaScript，用来手动启动angularjs应用
+    deps: ['app'],//首先启动初始化的JavaScript，用来手动启动angularjs应用
     urlArgs: "v=" + (new Date()).getTime()//防止读取缓存，调试用
 });
