@@ -49,7 +49,16 @@
         <setting name="logImpl" value="LOG4J2"/>
     </settings>
     <!--plugins插件之 分页拦截器  -->
-    <!--<plugins>-->
-    <!--<plugin interceptor="com.xhm.util.PageInterceptor"></plugin>-->
-    <!--</plugins>-->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <!--分页插件会自动检测当前的数据库链接，自动选择合适的分页方式。 你可以配置helperDialect属性来指定分页插件使用哪种方言。配置时，可以使用下面的缩写值：
+            oracle,mysql,mariadb,sqlite,hsqldb,postgresql,db2,sqlserver,informix,h2,sqlserver2012,derby
+            特别注意：使用 SqlServer2012 数据库时，需要手动指定为 sqlserver2012，否则会使用 SqlServer2005 的方式进行分页-->
+            <property name="helperDialect" value="mysql"/>
+            <!--如果 pageNum<=0 会查询第一页，如果 pageNum>总页数 会查询最后一页-->
+            <property name="reasonable" value="true"/>
+            <!--Spring 中配置了动态数据源，并且连接不同类型的数据库，这时你可以配置 autoRuntimeDialect 为 true，这样在使用不同数据源时，会使用匹配的分页进行查询-->
+            <property name="autoRuntimeDialect" value="true"/>
+        </plugin>
+    </plugins>
 </configuration>
