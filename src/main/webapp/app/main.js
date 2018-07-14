@@ -36,7 +36,7 @@ requirejs.config({
             exports: 'angular-route'
         },
         'angularAMD': ['angular', 'uiRouter'],
-        "ngLoad": {
+        'ngLoad': {
             deps: ["angularAMD"],
             experts: "ngLoad"
         }

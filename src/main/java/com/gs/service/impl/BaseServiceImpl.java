@@ -22,7 +22,7 @@ public class BaseServiceImpl implements BaseService {
 
     public List<City> selectAllCity(JSONObject data) {
         logger.debug("{}:selectAllCity:{},", "BaseServiceImpl", data.toJSONString());
-        PageHelper.startPage(1, 10);
+        PageHelper.startPage(1, 1000);
         List<City> result = baseMapper.selectAllCity(data);
         return result;
     }
