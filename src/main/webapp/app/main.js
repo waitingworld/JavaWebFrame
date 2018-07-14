@@ -14,14 +14,23 @@ requirejs.config({
         "domReady": "./external_library/require/domReady",
         "jquery": "./external_library/jquery/jquery-3.3.1",
         "bootstrap": "./external_library/bootstrap/bootstrap.min",
+        "bootstrap-css": "./external_library/bootstrap/bootstrap",
+        "base-css": "./css/baseCss",
+        "bootstrap-theme": "./external_library/bootstrap/bootstrap-theme",
         "math": "./external_library/math/Math.uuid",
         //自己的JavaScript文件
         "baseController": "./controller/baseController",
         "firstController": "./controller/firstController",
         "secondController": "./controller/secondController",
         "baseDirective": "./directive/baseDirective",
+        "pageDirective": "./external_library/page_directive/page-directive",
         "app": "./app",
         "baseService": "./service/baseService"
+    },
+    map: {
+        '*': {
+            'css': './external_library/require/require-css'
+        }
     },
     shim: {
         'angular': {
@@ -29,7 +38,7 @@ requirejs.config({
             exports: 'angular'
         },
         'bootstrap': {
-            deps: ['jquery']
+            deps: ['jquery', 'css!./bootstrap-theme', 'css!./bootstrap-css']
         },
         'uiRouter': {
             deps: ['angular'],
@@ -41,6 +50,6 @@ requirejs.config({
             experts: "ngLoad"
         }
     },
-    deps: ['app'],//首先启动初始化的JavaScript，用来手动启动angularjs应用
+    deps: ['app','css!base-css'],//首先启动初始化的JavaScript，用来手动启动angularjs应用
     urlArgs: "v=" + (new Date()).getTime()//防止读取缓存，调试用
 });

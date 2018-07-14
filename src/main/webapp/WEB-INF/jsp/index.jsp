@@ -9,9 +9,6 @@
 %>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link href="<%=basePath%>/app/external_library/bootstrap/bootstrap.css" rel="stylesheet">
-    <link href="<%=basePath%>/app/external_library/bootstrap/bootstrap-theme.css" rel="stylesheet">
-    <link href="<%=basePath%>/app/css/baseCss.css" rel="stylesheet">
     <script type="text/javascript" data-main='<%=basePath%>/app/main.js'
             src="<%=basePath%>/app/external_library/require/require.js"></script>
     <title>BaseIndexJSP</title>
