@@ -20,7 +20,7 @@ public class BaseServiceImpl implements BaseService {
     private BaseMapper baseMapper;
 
     public List<City> selectAllCity(JSONObject data) {
-        logger.info("{}:selectAllCity:{},", "BaseServiceImpl", data.toJSONString());
+        logger.debug("{}:selectAllCity:{},", "BaseServiceImpl", data.toJSONString());
         List<City> result = baseMapper.selectAllCity(data);
         return result;
     }

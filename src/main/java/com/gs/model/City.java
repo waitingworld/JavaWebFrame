@@ -6,7 +6,7 @@ import javax.enterprise.inject.Model;
 public class City {
     private String id;
     private String name;
-    private String country_code;
+    private String countryCode;
     private String district;
     private String population;
 
@@ -26,14 +26,6 @@ public class City {
         this.name = name;
     }
 
-    public String getCountry_code() {
-        return country_code;
-    }
-
-    public void setCountry_code(String country_code) {
-        this.country_code = country_code;
-    }
-
     public String getDistrict() {
         return district;
     }
@@ -50,12 +42,20 @@ public class City {
         this.population = population;
     }
 
+    public String getCountryCode() {
+        return countryCode;
+    }
+
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
+    }
+
     @Override
     public String toString() {
         return "City{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
-                ", country_code='" + country_code + '\'' +
+                ", countryCode='" + countryCode + '\'' +
                 ", district='" + district + '\'' +
                 ", population='" + population + '\'' +
                 '}';
