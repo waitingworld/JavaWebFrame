@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.json.JsonObject;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
@@ -23,9 +24,9 @@ public class BaseController {
 
     @ResponseBody
     @RequestMapping("/selectAllCity")
-    public List<City> selectAllCity(@RequestBody JSONObject data, HttpServletRequest request) {
-        List<City> cities = baseService.selectAllCity(data);
-        logger.info("selectAllCity:cities:{}",cities.size());
-        return cities;
+    public JSONObject selectAllCity(@RequestBody JSONObject data, HttpServletRequest request) {
+        logger.info("baseController:selectAllCity,{}", data.toJSONString());
+        JSONObject result = baseService.selectAllCity(data);
+        return result;
     }
 }

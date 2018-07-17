@@ -1,21 +1,21 @@
 <div>
-    <ul ng-if="conf.total>0" style="white-space:nowrap">
+    <ul style="white-space:nowrap">
         <li ng-disable="conf.currentPage == 1" ng-click="prevPage()" style="display:inline-block;">
             <button href="#"><</button>
         </li>
         <li style="display:inline-block;">
-            <div ng-if="!conf.isLinkPage">
+            <div>
                 <div>第<input style="width: 50px;" type="text" ng-model="conf.currentPage" ng-change="linkPage()">页</div>
             </div>
         </li>
-        <li ng-disable="conf.currentPage == page.limit" ng-click="nextPage()" style="display:inline-block;">
+        <li ng-disable="conf.currentPage == page.limit" ng-click="nextPage($event)" style="display:inline-block;">
             <button href="#">></button>
         </li>
         <li style="display:inline-block;">
             <div>
-                <div ng-if="!conf.isSelectPage">
+                <div>
                     一页<select ng-options="limit for limit in conf.pageLimit" ng-model="conf.itemPageLimit"
-                              ng-change="selectPage()"></select>条/
+                              ng-change="selectPage()"></select>条
                 </div>
             </div>
         </li>

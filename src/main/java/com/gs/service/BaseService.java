@@ -7,5 +7,5 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 public interface BaseService {
-    List<City> selectAllCity(JSONObject data);
+    JSONObject selectAllCity(JSONObject data);
 }

@@ -2,6 +2,7 @@ package com.gs.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.gs.dao.BaseMapper;
 import com.gs.model.City;
 import com.gs.service.BaseService;
@@ -20,10 +21,16 @@ public class BaseServiceImpl implements BaseService {
     @Autowired
     private BaseMapper baseMapper;
 
-    public List<City> selectAllCity(JSONObject data) {
+    public JSONObject selectAllCity(JSONObject data) {
+        JSONObject result = new JSONObject();
         logger.debug("{}:selectAllCity:{},", "BaseServiceImpl", data.toJSONString());
-        PageHelper.startPage(1, 100);
-        List<City> result = baseMapper.selectAllCity(data);
+        int currentPage = data.getInteger("currentPage");
+        int pageSize = data.getInteger("pageSize");
+        PageHelper.startPage(currentPage, pageSize);
+        List<City> cities = baseMapper.selectAllCity(data);
+        result.put("data",cities);
+        PageInfo<City> pageInfo = new PageInfo<City>(cities);
+        result.put("total",pageInfo.getTotal());
         return result;
     }
 }
