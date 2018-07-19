@@ -21,7 +21,6 @@
 
         <!-- mysql驱动版本号 -->
         <mysql-driver.version>8.0.11</mysql-driver.version>
-
     </properties>
     <dependencies>
         <!-- 添加jstl依赖 -->
@@ -234,6 +233,12 @@
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
             <version>1.9</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.dom4j</groupId>
+            <artifactId>dom4j</artifactId>
+            <version>2.1.1</version>
         </dependency>
     </dependencies>
     <build>
