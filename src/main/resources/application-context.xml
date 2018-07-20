@@ -14,21 +14,21 @@
 
     <!-- 第一种方式：加载一个properties文件 -->
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="location" value="classpath:jdbc.properties"/>
+    <property name="location" value="classpath:jdbc.properties"/>
     </bean>
 
     <!-- 第二种方式：加载多个properties文件
     <bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
         <property name="locations">
             <list>
-                <value>classpath:jdbc.properties</value>
-                <value>classpath:common.properties</value>
+                <value>classpath:jdbc.config</value>
+                <value>classpath:common.config</value>
             </list>
         </property>
         <property name="fileEncoding" value="UTF-8"/>
     </bean>
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
-        <property name="properties" ref="configProperties"/>
+        <property name="config" ref="configProperties"/>
     </bean>
     -->
 
@@ -55,7 +55,7 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="MysqlDataSource"/>
         <!-- 自动扫描mapping.xml文件 -->
-        <property name="configLocation"  value="classpath:mybatis-config.xml"/>
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
         <property name="mapperLocations" value="classpath:mapping/*.xml"/>
     </bean>
     <!-- mybatis spring sqlSessionTemplate,使用时直接让spring注入即可 -->
@@ -75,4 +75,5 @@
 
     <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
     <tx:annotation-driven transaction-manager="transactionManager"/>
+
 </beans>

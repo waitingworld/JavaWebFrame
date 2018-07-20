@@ -1,5 +1,7 @@
 package com.gs.model;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import javax.enterprise.inject.Model;
 
 @Model

@@ -6,10 +6,16 @@
          version="3.0">
 
     <display-name>WebApplication</display-name>
-
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:spring-mybatis.xml</param-value>
+        <param-value>
+            classpath:application-context.xml
+        </param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>environment</param-name>
+        <param-value>development</param-value>
     </context-param>
 
     <context-param>
@@ -44,7 +50,7 @@
 
     <!-- spring监听器 -->
     <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+        <listener-class>com.gs.system.context.CustomizeContextLoaderListener</listener-class>
     </listener>
 
     <!-- 防止spring内存溢出监听器，比如quartz -->

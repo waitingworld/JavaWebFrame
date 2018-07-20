@@ -15,6 +15,7 @@ public class Dom4jUtils {
 
     /**
      * 解析xml节点，返回json
+     *
      * @param ele
      * @return 解析JSON结果
      */
@@ -29,6 +30,7 @@ public class Dom4jUtils {
             JSONObject attrJSON = new JSONObject();
             attrJSON.put(attr.getName(), attr.getValue());
         }
+        result.put("attrs", attrJSONList);
         List<Element> eleList = ele.elements();
         //递归遍历父节点下的所有子节点
         for (Element e : eleList) {
@@ -38,8 +40,44 @@ public class Dom4jUtils {
         return result;
     }
 
+
+    /**
+     * 解析只有一个根节点的xml节点
+     *
+     * @param ele
+     * @return
+     */
+    public static JSONObject parserSimpleNode(Element ele) {
+        JSONObject result = new JSONObject();
+        List<Element> eleList = ele.elements();
+        //递归遍历根节点下的所有子节点
+        for (Element e : eleList) {
+            result.put(e.getName(), e.getTextTrim());
+        }
+        return result;
+    }
+
+    /**
+     * 解析只有一个根节点的xml
+     *
+     * @param xmlPath
+     * @return
+     */
+    public static JSONObject parserSimpleXML(String xmlPath) {
+        JSONObject result = new JSONObject();
+        SAXReader saxReader = new SAXReader();
+        try {
+            Document document = saxReader.read(new File(xmlPath));
+            result = parserSimpleNode(document.getRootElement());
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
     /**
      * 根据xml路径解析xml
+     *
      * @param xmlPath xml路径
      * @return 解析JSON结果
      */
